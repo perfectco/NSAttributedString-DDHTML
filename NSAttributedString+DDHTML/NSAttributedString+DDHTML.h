@@ -33,7 +33,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NSAttributedString (DDHTML)
+@interface NSMutableAttributedString (DDHTML)
 
 /**
  *  Generates an attributed string from HTML.
@@ -42,7 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return Attributed string
  */
-+ (NSAttributedString *)attributedStringFromHTML:(NSString *)htmlString;
++ (NSMutableAttributedString *)attributedStringFromHTML:(NSString *)htmlString;
 
 /**
  *  Generates an attributed string from HTML.
@@ -53,7 +53,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return Attributed string
  */
-+ (NSAttributedString *)attributedStringFromHTML:(NSString *)htmlString boldFont:(UIFont *)boldFont italicFont:(UIFont *)italicFont;
++ (NSMutableAttributedString *)attributedStringFromHTML:(NSString *)htmlString boldFont:(UIFont *)boldFont italicFont:(UIFont *)italicFont;
 
 /**
  *  Generates an attributed string from HTML.
@@ -65,7 +65,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return Attributed string
  */
-+ (NSAttributedString *)attributedStringFromHTML:(NSString *)htmlString normalFont:(UIFont *)normalFont boldFont:(UIFont *)boldFont italicFont:(UIFont *)italicFont;
++ (NSMutableAttributedString *)attributedStringFromHTML:(NSString *)htmlString normalFont:(UIFont *)normalFont boldFont:(UIFont *)boldFont italicFont:(UIFont *)italicFont;
 
 /**
  *  Generates an attributed string from HTML.
@@ -78,7 +78,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return Attributed string
  */
-+ (NSAttributedString *)attributedStringFromHTML:(NSString *)htmlString normalFont:(UIFont *)normalFont boldFont:(UIFont *)boldFont italicFont:(UIFont *)italicFont imageMap: (nullable NSDictionary<NSString *, UIImage *> *)imageMap;
++ (NSMutableAttributedString *)attributedStringFromHTML:(NSString *)htmlString normalFont:(UIFont *)normalFont boldFont:(UIFont *)boldFont italicFont:(UIFont *)italicFont imageMap: (nullable NSDictionary<NSString *, UIImage *> *)imageMap;
 
 @end
 

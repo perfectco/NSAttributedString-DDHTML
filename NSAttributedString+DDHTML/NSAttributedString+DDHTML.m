@@ -31,9 +31,9 @@
 #import "NSAttributedString+DDHTML.h"
 #include <libxml/HTMLparser.h>
 
-@implementation NSAttributedString (DDHTML)
+@implementation NSMutableAttributedString (DDHTML)
 
-+ (NSAttributedString *)attributedStringFromHTML:(NSString *)htmlString
++ (NSMutableAttributedString *)attributedStringFromHTML:(NSString *)htmlString
 {
     UIFont *preferredBodyFont = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     
@@ -43,14 +43,14 @@
                                italicFont:[UIFont italicSystemFontOfSize:preferredBodyFont.pointSize]];
 }
 
-+ (NSAttributedString *)attributedStringFromHTML:(NSString *)htmlString boldFont:(UIFont *)boldFont italicFont:(UIFont *)italicFont
++ (NSMutableAttributedString *)attributedStringFromHTML:(NSString *)htmlString boldFont:(UIFont *)boldFont italicFont:(UIFont *)italicFont
 {
     return [self attributedStringFromHTML:htmlString
                                normalFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]
                                  boldFont:boldFont
                                italicFont:italicFont];
 }
-+ (NSAttributedString *)attributedStringFromHTML:(NSString *)htmlString normalFont:(UIFont *)normalFont boldFont:(UIFont *)boldFont italicFont:(UIFont *)italicFont
++ (NSMutableAttributedString *)attributedStringFromHTML:(NSString *)htmlString normalFont:(UIFont *)normalFont boldFont:(UIFont *)boldFont italicFont:(UIFont *)italicFont
 {
     return [self attributedStringFromHTML:htmlString
                                normalFont:normalFont
@@ -59,14 +59,14 @@
                                  imageMap:nil];
 }
 
-+ (NSAttributedString *)attributedStringFromHTML:(NSString *)htmlString normalFont:(UIFont *)normalFont boldFont:(UIFont *)boldFont italicFont:(UIFont *)italicFont imageMap:(NSMutableDictionary<NSString *, UIImage *> *)imageMap
++ (NSMutableAttributedString *)attributedStringFromHTML:(NSString *)htmlString normalFont:(UIFont *)normalFont boldFont:(UIFont *)boldFont italicFont:(UIFont *)italicFont imageMap:(NSMutableDictionary<NSString *, UIImage *> *)imageMap
 {
     // Parse HTML string as XML document using UTF-8 encoding
     NSData *documentData = [htmlString dataUsingEncoding:NSUTF8StringEncoding];
     xmlDoc *document = htmlReadMemory(documentData.bytes, (int)documentData.length, nil, "UTF-8", HTML_PARSE_NOWARNING | HTML_PARSE_NOERROR);
     
     if (document == NULL) {
-        return [[NSAttributedString alloc] initWithString:htmlString attributes:nil];
+        return [[NSMutableAttributedString alloc] initWithString:htmlString attributes:nil];
     }
     
     NSMutableAttributedString *finalAttributedString = [[NSMutableAttributedString alloc] init];
@@ -84,7 +84,7 @@
     return finalAttributedString;
 }
 
-+ (NSAttributedString *)attributedStringFromNode:(xmlNodePtr)xmlNode normalFont:(UIFont *)normalFont boldFont:(UIFont *)boldFont italicFont:(UIFont *)italicFont imageMap:(NSMutableDictionary<NSString *, UIImage *> *)imageMap
++ (NSMutableAttributedString *)attributedStringFromNode:(xmlNodePtr)xmlNode normalFont:(UIFont *)normalFont boldFont:(UIFont *)boldFont italicFont:(UIFont *)italicFont imageMap:(NSMutableDictionary<NSString *, UIImage *> *)imageMap
 {
     NSMutableAttributedString *nodeAttributedString = [[NSMutableAttributedString alloc] init];
     
