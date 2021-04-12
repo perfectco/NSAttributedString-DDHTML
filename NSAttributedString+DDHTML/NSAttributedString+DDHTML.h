@@ -1,8 +1,8 @@
 //
 //  NSAttributedString+HTML.m
 //
-//  Created by Derek Bowen
-//  Copyright (c) 2012, Deloitte Digital
+//  Created by Derek Bowen <dbowen@demiurgic.co>
+//  Copyright (c) 2012-2015, Deloitte Digital
 //  All rights reserved.
 //
 //  Redistribution and use in source and binary forms, with or without
@@ -29,9 +29,57 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+NS_ASSUME_NONNULL_BEGIN
 
 @interface NSAttributedString (DDHTML)
 
+/**
+ *  Generates an attributed string from HTML.
+ *
+ *  @param htmlString HTML String
+ *
+ *  @return Attributed string
+ */
++ (NSAttributedString *)attributedStringFromHTML:(NSString *)htmlString;
+
+/**
+ *  Generates an attributed string from HTML.
+ *
+ *  @param htmlString HTML String
+ *  @param boldFont   Font to use for \<b\> and \<strong\> tags
+ *  @param italicFont Font to use for \<i\> and \<em\> tags
+ *
+ *  @return Attributed string
+ */
 + (NSAttributedString *)attributedStringFromHTML:(NSString *)htmlString boldFont:(UIFont *)boldFont italicFont:(UIFont *)italicFont;
 
+/**
+ *  Generates an attributed string from HTML.
+ *
+ *  @param htmlString HTML String
+ *  @param normalFont Font to use for general text
+ *  @param boldFont   Font to use for \<b\> and \<strong\> tags
+ *  @param italicFont Font to use for \<i\> and \<em\> tags
+ *
+ *  @return Attributed string
+ */
++ (NSAttributedString *)attributedStringFromHTML:(NSString *)htmlString normalFont:(UIFont *)normalFont boldFont:(UIFont *)boldFont italicFont:(UIFont *)italicFont;
+
+/**
+ *  Generates an attributed string from HTML.
+ *
+ *  @param htmlString   HTML String
+ *  @param normalFont   Font to use for general text
+ *  @param boldFont     Font to use for \<b\> and \<strong\> tags
+ *  @param italicFont   Font to use for \<i\> and \<em\> tags
+ *  @param imageMap     Images to use in place of standard bundle images.
+ *
+ *  @return Attributed string
+ */
++ (NSAttributedString *)attributedStringFromHTML:(NSString *)htmlString normalFont:(UIFont *)normalFont boldFont:(UIFont *)boldFont italicFont:(UIFont *)italicFont imageMap: (nullable NSDictionary<NSString *, UIImage *> *)imageMap;
+
 @end
+
+NS_ASSUME_NONNULL_END
